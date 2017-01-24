@@ -7,7 +7,7 @@ const handlebars = require('express-handlebars');
 function caps(title) {
 	let words = title.split(' ');
 	for (let i = 0; i < words.length; i++) {
-		if (words[i].length > 3 || words[i] != 'the') {
+		if (words[i].length > 3 || (words[i] != 'the' && words[i] != 'and')) {
 			words[i] = words[i][0].toUpperCase() + words[i].substr(1);
 		}
 	}
@@ -28,8 +28,20 @@ function loadBurgers(cb) {
 				}
 			});
 		}
-		console.log('burger:', burgers[0]);
 		cb(burgers);
+	});
+}
+
+function addBurger(param, cb) {
+	orm.insertOne(param, (err, res) => {
+		if (err) throw err;
+		cb(res);
+	});
+}
+
+function devour(param, cb) {
+	orm.updateOne(param, (err) => {
+		cb(err);
 	});
 }
 
@@ -38,3 +50,5 @@ exports.helpers = {
 };
 
 exports.getBurgers = loadBurgers;
+exports.addBurger = addBurger;
+exports.devour = devour;

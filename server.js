@@ -6,9 +6,6 @@ const router = require('./controllers/burgers_controller');
 const handlebars = require('express-handlebars');
 const model = require('./models/burger');
 
-// const methodOverride = require('method-override');
-// const bodyParser = require('body-parser');
-
 const app = express();
 const hbs = handlebars.create({
 	defaultLayout: 'main',

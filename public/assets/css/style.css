@@ -8,6 +8,14 @@ header div img {
     max-height: 190px;
 }
 
+.panel, .panel-body {
+    margin-right: auto;
+}
+
+.content {
+    padding-top: 20px;
+}
+
 .form-group button {
     margin: 20px 10px 10px 10px;
 }
@@ -17,6 +25,6 @@ form {
 }
 
 .devoured {
-    float: right;
+    background-color: #eeeeee;
+    cursor: default;
 }
-

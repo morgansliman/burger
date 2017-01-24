@@ -10,7 +10,9 @@ const conn = mysql.createConnection({
 	user: 'root',
 	password: pass.sql,
 	database: 'burgers_db'
-}).connect((err) => {
+});
+
+conn.connect((err) => {
 	if (err) throw err;
 });
 

@@ -11,12 +11,14 @@ const router = express.Router();
 router.use(bodyParser.urlencoded({ extended: true }));
 
 router.get('/', (req, res) => {
-	res.render('index');
+	model.getBurgers((data) => {
+		console.log('\n', { burgers: data });
+		res.render('index', { burgers: data });
+	});
 });
 
 router.post('/', (req, res) => {
-	console.log(req.body);
-	res.render('index', req.body);
+	console.log(req);
 });
 
 module.exports = router;

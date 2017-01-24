@@ -15,7 +15,26 @@ function caps(title) {
 	return title;
 }
 
+function loadBurgers(cb) {
+	orm.selectAll((err, res) => {
+		if (err) throw err;
+		let burgers = [];
+		for (let i = 0; i < res.length; i++) {
+			burgers.push({
+				burger: {
+					name: res[i].burger_name,
+					id: res[i].id,
+					devoured: res[i].devoured
+				}
+			});
+		}
+		console.log('burger:', burgers[0]);
+		cb(burgers);
+	});
+}
 
 exports.helpers = {
 	capitalize: caps
 };
+
+exports.getBurgers = loadBurgers;

@@ -1,3 +1,16 @@
-{{#if burger}}
-    {{capitalize burger}}
+{{#if burgers}}
+    {{#each burgers}}
+        <div class="row">
+            {{#unless burger.devoured}}
+                <div class="col-sm-4">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            {{burger.id}}. {{capitalize burger.name}}
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-default" type="button">Devour</button>
+            {{/unless}}
+        </div>
+    {{/each}}
 {{/if}}
